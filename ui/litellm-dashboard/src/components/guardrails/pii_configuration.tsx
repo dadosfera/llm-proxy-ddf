@@ -64,7 +64,7 @@ const PiiConfiguration: React.FC<PiiConfigurationProps> = ({
     <div className="pii-configuration">
       <div className="flex justify-between items-center mb-5">
         <div className="flex items-center">
-          <Title level={4} className="mb-0 font-semibold text-gray-800">Configure PII Protection</Title>
+                      <Title level={4} className="mb-0 font-semibold text-gray-800 font-quicksand">Configure PII Protection</Title>
         </div>
         <Badge 
           count={selectedEntities.length} 

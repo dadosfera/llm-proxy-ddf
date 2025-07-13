@@ -147,7 +147,7 @@ const AddPassThroughEndpoint: React.FC<AddFallbacksProps> = ({
           >
             {/* Route Configuration Section */}
             <Card className="p-5">
-              <Title className="text-lg font-semibold text-gray-900 mb-2">Route Configuration</Title>
+              <Title className="text-lg font-semibold text-gray-900 mb-2 font-quicksand">Route Configuration</Title>
               <Subtitle className="text-gray-600 mb-5">Configure how requests to your domain will be forwarded to the target API</Subtitle>
               
               <div className="space-y-5">
@@ -234,7 +234,7 @@ const AddPassThroughEndpoint: React.FC<AddFallbacksProps> = ({
 
             {/* Headers Section */}
             <Card className="p-6">
-              <Title className="text-lg font-semibold text-gray-900 mb-2">Headers</Title>
+              <Title className="text-lg font-semibold text-gray-900 mb-2 font-quicksand">Headers</Title>
               <Subtitle className="text-gray-600 mb-6">Add headers that will be sent with every request to the target API</Subtitle>
               
               <Form.Item
@@ -261,7 +261,7 @@ const AddPassThroughEndpoint: React.FC<AddFallbacksProps> = ({
 
             {/* Billing Section */}
             <Card className="p-6">
-              <Title className="text-lg font-semibold text-gray-900 mb-2">Billing</Title>
+              <Title className="text-lg font-semibold text-gray-900 mb-2 font-quicksand">Billing</Title>
               <Subtitle className="text-gray-600 mb-6">Optional cost tracking for this endpoint</Subtitle>
               
               <Form.Item

@@ -235,7 +235,7 @@ const GuardrailOptionalParams: React.FC<GuardrailOptionalParamsProps> = ({
   return (
     <div className="guardrail-optional-params">
       <div className="mb-8 pb-4 border-b border-gray-100">
-        <Title level={3} className="mb-2 font-semibold text-gray-900">
+                    <Title level={3} className="mb-2 font-semibold text-gray-900 font-quicksand">
           Optional Parameters
         </Title>
         <p className="text-gray-600 text-sm">

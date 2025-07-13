@@ -31,7 +31,6 @@ const Navbar: React.FC<NavbarProps> = ({
   accessToken,
 }) => {
   const baseUrl = getProxyBaseUrl();
-  const imageUrl = baseUrl + "/get_image";
   const [logoutUrl, setLogoutUrl] = useState("");
 
   useEffect(() => {
@@ -84,10 +83,13 @@ const Navbar: React.FC<NavbarProps> = ({
           <div className="flex items-center flex-shrink-0">
             <Link href="/" className="flex items-center">
               <img
-                src={imageUrl}
-                alt="LiteLLM Brand"
-                className="h-8 w-auto"
+                src={`${baseUrl}/get_image`}
+                alt="Logo Dadosfera"
+                className="h-8 w-auto mr-2"
               />
+              <span className="font-bold text-lg text-[#0C033A] font-quicksand">
+                Dadosfera LLM Proxy
+              </span>
             </Link>
           </div>
 

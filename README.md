@@ -1,5 +1,5 @@
 <h1 align="center">
-        🚅 LiteLLM
+        LiteLLM
     </h1>
     <p align="center">
         <p align="center">

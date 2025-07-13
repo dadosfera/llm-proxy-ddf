@@ -24,7 +24,7 @@ const getLocalTime = (utcTime: string): string => {
 export const TimeCell: React.FC<TimeCellProps> = ({ utcTime }) => {
   return (
     <span style={{
-      fontFamily: 'monospace',
+      fontFamily: 'Quicksand, monospace',
       width: '180px',
       display: 'inline-block'
     }}>

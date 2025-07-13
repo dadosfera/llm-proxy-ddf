@@ -13,7 +13,7 @@ USER_INVITATION_EMAIL_TEMPLATE = """
         body, html {{
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             color: #333333;
             background-color: #f8f8f8;
             line-height: 1.5;

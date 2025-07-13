@@ -27,7 +27,7 @@ const RoutePreview: React.FC<RoutePreviewProps> = ({
 
   return (
     <Card className="p-5">
-      <Title className="text-lg font-semibold text-gray-900 mb-2">Route Preview</Title>
+              <Title className="text-lg font-semibold text-gray-900 mb-2 font-quicksand">Route Preview</Title>
       <Subtitle className="text-gray-600 mb-5">How your requests will be routed</Subtitle>
       
       <div className="space-y-5">

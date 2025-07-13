@@ -183,7 +183,7 @@ jwt_display_template = """
     <div class="container">
         <div class="logo-container">
             <div class="logo">
-                🚅 LiteLLM
+                LiteLLM
             </div>
         </div>
         <h2>SSO Debug Information</h2>

@@ -39,7 +39,7 @@
 	// More info: https://containers.dev/implementors/json_reference/#port-attributes
 	"portsAttributes": {
 		"4000": {
-			"label": "LiteLLM Server",
+			"label": "Dadosfera LLM Proxy Server",
 			"onAutoForward": "notify"
 		}
 	},

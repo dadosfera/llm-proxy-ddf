@@ -1,8 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,500,700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+* {
+  font-family: 'Quicksand', Arial, sans-serif !important;
+}
+
 :root {
+  --ifm-color-primary: #0C033A;
+  --ifm-color-primary-dark: #09022a;
+  --ifm-color-primary-darker: #07021f;
+  --ifm-color-primary-darkest: #050116;
+  --ifm-color-primary-light: #1a1466;
+  --ifm-color-primary-lighter: #2a24a0;
+  --ifm-color-primary-lightest: #3a34e6;
+  --ifm-background-color: #F5F6FA;
+  --ifm-font-family-base: 'Quicksand', Arial, sans-serif;
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 255, 255, 255;
   --background-end-rgb: 255, 255, 255;
@@ -17,7 +32,8 @@
   }
 } */
 
-body {
+body, html {
+  font-family: 'Quicksand', Arial, sans-serif;
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,

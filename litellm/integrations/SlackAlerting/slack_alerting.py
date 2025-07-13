@@ -1051,7 +1051,7 @@ class SlackAlerting(CustomBatchLogger):
             model_info_str += f"{k}: {v}\n"
 
         message = f"""
-*🚅 New Model Added*
+*New Model Added*
 Model Name: `{model_name}`
 {base_model}
 

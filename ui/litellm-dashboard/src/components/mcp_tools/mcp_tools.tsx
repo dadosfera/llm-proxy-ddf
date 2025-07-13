@@ -143,7 +143,7 @@ function DataTableWrapper({
       isLoading={isLoading}
       renderSubComponent={renderSubComponent}
       getRowCanExpand={getRowCanExpand}
-      loadingMessage="🚅 Loading tools..."
+      loadingMessage="Loading tools..."
       noDataMessage="No tools found"
     />
   );

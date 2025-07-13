@@ -95,7 +95,7 @@ const SCIMConfig: React.FC<SCIMConfigProps> = ({ accessToken, userID, proxySetti
               <div className="flex items-center justify-center w-6 h-6 rounded-full bg-blue-100 text-blue-700 mr-2">
                 1
               </div>
-              <Title className="text-lg flex items-center">
+              <Title className="text-lg flex items-center font-quicksand">
                 <LinkOutlined className="h-5 w-5 mr-2" />
                 SCIM Tenant URL
               </Title>
@@ -127,7 +127,7 @@ const SCIMConfig: React.FC<SCIMConfigProps> = ({ accessToken, userID, proxySetti
               <div className="flex items-center justify-center w-6 h-6 rounded-full bg-blue-100 text-blue-700 mr-2">
                 2
               </div>
-              <Title className="text-lg flex items-center">
+              <Title className="text-lg flex items-center font-quicksand">
                 <KeyOutlined className="h-5 w-5 mr-2" />
                 Authentication Token
               </Title>
@@ -168,7 +168,7 @@ const SCIMConfig: React.FC<SCIMConfigProps> = ({ accessToken, userID, proxySetti
               <Card className="border border-yellow-300 bg-yellow-50">
                 <div className="flex items-center mb-2 text-yellow-800">
                   <ExclamationCircleOutlined className="h-5 w-5 mr-2" />
-                  <Title className="text-lg text-yellow-800">Your SCIM Token</Title>
+                  <Title className="text-lg text-yellow-800 font-quicksand">Your SCIM Token</Title>
                 </div>
                 <Text className="text-yellow-800 mb-4 font-medium">
                   Make sure to copy this token now. You will not be able to see it again.

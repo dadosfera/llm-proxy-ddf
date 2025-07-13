@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+import { Quicksand } from "next/font/google";
+const quicksand = Quicksand({ subsets: ["latin"], weight: ["400", "500", "700"] });
 
 export const metadata: Metadata = {
-  title: "LiteLLM Dashboard",
-  description: "LiteLLM Proxy Admin UI",
-  icons: { icon: "./favicon.ico" },
+  title: "Dadosfera LLM Proxy Dashboard",
+  description: "Dadosfera LLM Proxy Admin UI",
+  icons: { icon: "/assets/logos/logo-dadosfera.png" },
 };
 
 export default function RootLayout({
@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={quicksand.className}>{children}</body>
     </html>
   );
 }

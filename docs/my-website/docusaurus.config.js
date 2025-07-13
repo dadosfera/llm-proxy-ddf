@@ -151,7 +151,7 @@ const config = {
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.png',
       navbar: {
-        title: '🚅 LiteLLM',
+        title: 'Dadosfera LLM Proxy',
         items: [
           {
             type: 'docSidebar',

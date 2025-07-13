@@ -257,7 +257,7 @@ const TeamSSOSettings: React.FC<TeamSSOSettingsProps> = ({ accessToken, userID, 
   return (
     <Card>
       <div className="flex justify-between items-center mb-4">
-        <Title className="text-xl">Default Team Settings</Title>
+                    <Title className="text-xl font-quicksand">Default Team Settings</Title>
         {!loading && settings && (
           isEditing ? (
             <div className="flex gap-2">

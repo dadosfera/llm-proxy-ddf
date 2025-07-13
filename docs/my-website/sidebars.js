@@ -579,7 +579,7 @@ const sidebars = {
         "migration_policy",
         {
           type: "category",
-          label: "❤️ 🚅 Projects built on LiteLLM",
+          label: "❤️ Projects built on LiteLLM",
           link: {
             type: "generated-index",
             title: "Projects built on LiteLLM",

@@ -18,7 +18,7 @@ def render_cli_sso_success_page() -> str:
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
             body {{
-                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+                font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
                 background-color: #f8fafc;
                 margin: 0;
                 padding: 20px;
@@ -47,6 +47,7 @@ def render_cli_sso_success_page() -> str:
                 font-size: 24px;
                 font-weight: 600;
                 color: #1e293b;
+                font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             }}
             
             h1 {{
@@ -150,7 +151,7 @@ def render_cli_sso_success_page() -> str:
         <div class="container">
             <div class="logo-container">
                 <div class="logo">
-                    🚅 LiteLLM
+                    LiteLLM
                 </div>
             </div>
             

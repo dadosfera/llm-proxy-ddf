@@ -67,7 +67,7 @@ const DashboardTeam: React.FC<DashboardTeamProps> = ({
 
   return (
     <div className="mt-5 mb-5">
-      <Title>Select Team</Title>
+      <Title className="font-quicksand">Select Team</Title>
       
       <Text>
         If you belong to multiple teams, this setting controls which team is used by default when creating new API Keys.

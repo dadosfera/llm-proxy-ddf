@@ -14,7 +14,7 @@ html_form = f"""
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {{
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             background-color: #f8fafc;
             margin: 0;
             padding: 20px;
@@ -43,6 +43,7 @@ html_form = f"""
             font-size: 24px;
             font-weight: 600;
             color: #1e293b;
+            font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
         }}
         
         h2 {{
@@ -192,7 +193,7 @@ html_form = f"""
     <form action="{url_to_redirect_to}" method="post">
         <div class="logo-container">
             <div class="logo">
-                🚅 LiteLLM
+                Dadosfera LLM Proxy
             </div>
         </div>
         <h2>Login</h2>

@@ -91,7 +91,7 @@ const MemberPermissions: React.FC<MemberPermissionsProps> = ({
   return (
     <Card className="bg-white shadow-md rounded-md p-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b pb-4 mb-6">
-        <Title className="mb-2 sm:mb-0">Member Permissions</Title>
+                    <Title className="mb-2 sm:mb-0 font-quicksand">Member Permissions</Title>
         {canEditTeam && hasChanges && (
           <div className="flex gap-3">
             <Button icon={<ReloadOutlined />} onClick={handleReset}>

@@ -55,7 +55,7 @@ const AzureTextModerationConfiguration: React.FC<AzureTextModerationConfiguratio
       <div className="flex justify-between items-center mb-5">
         <div className="flex items-center">
           <SafetyOutlined className="text-blue-600 mr-2 text-lg" />
-          <Title level={4} className="mb-0 font-semibold text-gray-800">Azure Text Moderation</Title>
+                      <Title level={4} className="mb-0 font-semibold text-gray-800 font-quicksand">Azure Text Moderation</Title>
         </div>
         <Badge 
           count={selectedCategories.length} 

@@ -506,7 +506,7 @@ const MCPConnect: React.FC = () => {
     <div>
       <Space direction="vertical" size="large" className="w-full">
         <div>
-          <TremorTitle className="text-3xl font-bold text-gray-900 mb-3">
+          <TremorTitle className="text-3xl font-bold text-gray-900 mb-3 font-quicksand">
             Connect to your MCP client
           </TremorTitle>
           <TremorText className="text-lg text-gray-600">

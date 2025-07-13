@@ -572,7 +572,7 @@ const ChatUI: React.FC<ChatUIProps> = ({
       <div className="flex h-[80vh] w-full gap-4">
         {/* Left Sidebar with Controls */}
         <div className="w-1/4 p-4 bg-gray-50">
-          <Title className="text-xl font-semibold mb-6 mt-2">Configurations</Title>
+                      <Title className="text-xl font-semibold mb-6 mt-2 font-quicksand">Configurations</Title>
             <div className="space-y-6">
               <div>
                 <Text className="font-medium block mb-2 text-gray-700 flex items-center">
@@ -720,7 +720,7 @@ const ChatUI: React.FC<ChatUIProps> = ({
         {/* Main Chat Area */}
         <div className="w-3/4 flex flex-col bg-white">
           <div className="p-4 border-b border-gray-200 flex justify-between items-center">
-            <Title className="text-xl font-semibold mb-0">Test Key</Title>
+            <Title className="text-xl font-semibold mb-0 font-quicksand">Test Key</Title>
             <TremorButton
               onClick={() => setIsGetCodeModalVisible(true)}
               className="bg-gray-100 hover:bg-gray-200 text-gray-700 border-gray-300"

@@ -128,7 +128,7 @@ const ModelHub: React.FC<ModelHubProps> = ({
           <div
             className={`flex ${publicPage ? "justify-between" : "items-center"}`}
           >
-            <Title className="ml-8 text-center ">Model Hub</Title>
+            <Title className="ml-8 text-center font-quicksand">Model Hub</Title>
             {publicPage == false ? (
               premiumUser ? (
                 <Button className="ml-4" onClick={() => handleMakePublicPage()}>
