@@ -7488,7 +7488,7 @@ def get_image():
 
     # get current_dir
     current_dir = os.path.dirname(os.path.abspath(__file__))
-    default_logo = os.path.join(current_dir, "logo.jpg")
+    default_logo = os.path.join(current_dir, "logo.png")
 
     logo_path = os.getenv("UI_LOGO_PATH", default_logo)
     verbose_proxy_logger.debug("Reading logo from path: %s", logo_path)
@@ -7500,7 +7500,7 @@ def get_image():
         response = client.get(logo_path)
         if response.status_code == 200:
             # Save the image to a local file
-            cache_path = os.path.join(current_dir, "cached_logo.jpg")
+            cache_path = os.path.join(current_dir, "cached_logo.png")
             with open(cache_path, "wb") as f:
                 f.write(response.content)
 

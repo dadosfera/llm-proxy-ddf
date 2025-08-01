@@ -1373,7 +1373,7 @@ def encode_image(image_path):
     with open(image_path, "rb") as image_file:
         return base64.b64encode(image_file.read()).decode("utf-8")
 
-image_path = "cached_logo.jpg"
+image_path = "cached_logo.png"
 # Getting the base64 string
 base64_image = encode_image(image_path)
 response = litellm.completion(

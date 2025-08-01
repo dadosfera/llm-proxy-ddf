@@ -855,7 +855,7 @@ def test_completion_claude_3_base64():
     try:
         litellm.set_verbose = True
         litellm.num_retries = 3
-        image_path = "../proxy/cached_logo.jpg"
+        image_path = "../proxy/cached_logo.png"
         # Getting the base64 string
         base64_image = encode_image(image_path)
         resp = litellm.completion(
