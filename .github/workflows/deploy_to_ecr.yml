@@ -1,0 +1,153 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+      - beta
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+
+jobs:
+  extract_environment:
+    runs-on: ubuntu-latest
+    outputs:
+      environment: ${{ steps.extract_environment.outputs.environment }}
+    steps:
+      - name: Extract Environment
+        run: |
+          if [ ${GITHUB_REF} == "refs/heads/main" ]; then
+            echo "environment=prd" >> $GITHUB_OUTPUT
+          elif [ ${GITHUB_REF} == "refs/heads/beta" ]; then
+            echo "environment=stg" >> $GITHUB_OUTPUT
+          fi
+        id: extract_environment
+
+  semantic_release:
+    runs-on: ubuntu-latest
+    outputs:
+      new_release_published: ${{ steps.semantic.outputs.new_release_published }}
+      new_release_version: ${{ (steps.semantic.outputs.new_release_published == 'true' && steps.semantic.outputs.new_release_version) || (github.event_name == 'workflow_dispatch' && '0.0.0') }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - if: github.event_name != 'workflow_dispatch'
+        name: Semantic Release
+        uses: cycjimmy/semantic-release-action@v3
+        id: semantic
+        with:
+          extra_plugins: |
+            conventional-changelog-eslint@4.0.0
+          branches: |
+            [
+              'main',
+              {
+                name: 'alpha',
+                prerelease: true
+              },
+              {
+                name: 'beta',
+                prerelease: true
+              }
+            ]
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  build_ecr_image:
+    if: ${{ github.event_name == 'workflow_dispatch' || needs.semantic_release.outputs.new_release_published == 'true' }}
+    needs: [extract_environment, semantic_release]
+    outputs:
+      account_id: ${{ steps.aws.outputs.aws-account-id }}
+    runs-on:
+      [self-hosted, "prd"]
+
+    steps:
+      - name: Printing stats
+        env:
+          EVENT: ${{ github.event_name }}
+          IMAGE_TAG: ${{ needs.semantic_release.outputs.new_release_version }}
+          ENV: ${{ needs.extract_environment.outputs.environment }}
+        run: echo ${GITHUB_REF#refs/heads/}
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Update Pip
+        run: |
+          python3 -m pip install --upgrade pip
+
+      - name: Install AWS CLI
+        run: |
+          python3 -m pip install awscli --upgrade
+
+
+      - name: Check for Application Changes
+        id: check_changes
+        uses: dorny/paths-filter@v2
+        with:
+          filters: |
+            app_changed:
+              - '!.github/**'
+              - '!deploy/**'
+              - '**'
+
+      - name: Configure AWS Region
+        uses: aws-actions/configure-aws-credentials@v4
+        id: aws
+        with:
+          aws-region: us-east-1
+
+      - name: Login to AWS ECR
+        id: login_ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Create ECR Repository
+        env:
+          ENV: ${{ needs.extract_environment.outputs.environment }}
+          APPLICATION_NAME: ${{ github.event.repository.name }}
+        run: |
+          aws ecr create-repository --repository-name dataapps/${APPLICATION_NAME}-${ENV} --region us-east-1 || true
+
+      - name: Check ECR Repository Status
+        id: check_image
+        env:
+          ENV: ${{ needs.extract_environment.outputs.environment }}
+          APPLICATION_NAME: ${{ github.event.repository.name }}
+        run: |
+          # Check if any images exist in the repository
+          LATEST_TAG=$(aws ecr describe-images --repository-name dataapps/${APPLICATION_NAME}-${ENV} --region us-east-1 --query 'sort_by(imageDetails,&imagePushedAt)[-1].imageTags[0]' --output text 2>/dev/null || echo "null")
+          
+          if [ "$LATEST_TAG" != "null" ] && [ "$LATEST_TAG" != "None" ]; then
+            echo "has_existing_images=true" >> $GITHUB_OUTPUT
+            echo "latest_existing_tag=${LATEST_TAG}" >> $GITHUB_OUTPUT
+          else
+            echo "has_existing_images=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Build, Tag, and Push Image to AWS ECR
+        if: ${{ steps.check_changes.outputs.app_changed == 'true' || steps.check_image.outputs.has_existing_images == 'false' }}
+        env:
+          ENV: ${{ needs.extract_environment.outputs.environment }}
+          IMAGE_TAG: ${{ needs.semantic_release.outputs.new_release_version }}
+          ACCOUNT_ID: ${{ steps.aws.outputs.aws-account-id }}
+          APPLICATION_NAME: ${{ github.event.repository.name }}
+        run: |
+          docker compose -f build.docker-compose.yaml build
+          docker compose -f build.docker-compose.yaml push
+
+      - name: Skip Build - Using Existing Image
+        if: ${{ steps.check_changes.outputs.app_changed == 'false' && steps.check_image.outputs.has_existing_images == 'true' }}
+        run: |
+          echo "No application changes detected. Will reuse existing image: ${{ steps.check_image.outputs.latest_existing_tag }}"
+
+      - name: Remove Docker's Trash
+        if: always()
+        run: |
+          docker system prune --volumes -a -f
+          docker system df
+

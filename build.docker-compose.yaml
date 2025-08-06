@@ -1,0 +1,7 @@
+services:
+  application:
+    build:
+      context: .
+      args:
+        target: runtime
+    image: ${ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/dataapps/${APPLICATION_NAME}-${ENV}:${IMAGE_TAG}
